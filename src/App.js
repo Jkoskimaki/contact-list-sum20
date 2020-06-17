@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Header } from 'semantic-ui-react';
+import Contacts from './components/contacts/Contacts';
 
 // Clean up to be higher order (which is usually a logical) component
 
@@ -13,11 +14,13 @@ class App extends Component {
   ]}
 
   render() {
+    const { contacts} = this.state 
     return(
      <div>
        <Header size = "Huge" color = "blue" textAlign = 'center'>
         Contact List
        </Header>
+       <Contacts contacts={contacts} />
      </div> 
     )
   }
