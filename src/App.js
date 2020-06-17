@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Header } from 'semantic-ui-react';
 import Contacts from './components/contacts/Contacts';
+import ContactForm from './components/contacts/ContactForm';
 
 // Clean up to be higher order (which is usually a logical) component
 
@@ -13,10 +14,17 @@ class App extends Component {
 
   ]}
 
+  addContact = (incomingContact) => {
+    const {contacts} = this.state
+    const newContact = {id: this.getId(), ...incomingContact}
+    this.setState({ contacts: [newContact, ...contacts ]})
+  }
+
   render() {
     const { contacts} = this.state 
     return(
      <div>
+       <ContactForm addContact={this.addContact} />
        <Header size = "Huge" color = "blue" textAlign = 'center'>
         Contact List
        </Header>
